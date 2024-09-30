@@ -1,0 +1,51 @@
+/* client/src/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 15px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  form {
+    margin: 20px 0;
+  }
+  
+  form input {
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  form button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
