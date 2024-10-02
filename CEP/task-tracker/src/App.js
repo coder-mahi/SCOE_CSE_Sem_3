@@ -7,6 +7,9 @@ import AddTask from './components/AddTask';
 import TaskList from './components/TaskList';
 import TaskDetail from './components/TaskDetail';
 import Navbar from './components/Navbar';
+import UserProfile from './components/UserProfile';
+import Notification from './components/Notification';
+import EditTask from './components/EditTask';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,6 +29,10 @@ function App() {
           </>
         )}
         <Route path="*" element={<Navigate to={isAuthenticated ? "/tasks" : "/"} />} />
+        <Route path="/edit-task/:id" element={<EditTask />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/notification" element={<Notification />} />
+
       </Routes>
     </Router>
   );
