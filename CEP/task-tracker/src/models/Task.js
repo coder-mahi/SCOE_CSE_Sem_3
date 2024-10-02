@@ -1,16 +1,33 @@
-// src/models/Task.js
+const mongoose = require('mongoose');
 
-class Task {
-    constructor(title, description, dueDate, assignedTo) {
-      this.title = title;
-      this.description = description;
-      this.dueDate = dueDate;
-      this.assignedTo = assignedTo; // User ID or reference
-      this.completed = false;
-      this.createdAt = new Date();
-      this.updatedAt = new Date();
+const taskSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    dueDate: {
+        type: Date
+    },
+    assignedTo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User' // Reference to User model
+    },
+    completed: {
+        type: Boolean,
+        default: false
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now
     }
-  }
-  
-  export default Task;
-  
+});
+
+module.exports = mongoose.model('Task', taskSchema);
