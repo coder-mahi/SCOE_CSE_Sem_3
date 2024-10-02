@@ -1,14 +1,13 @@
-// src/models/User.js
+// models/User.js
+const mongoose = require('mongoose');
 
-class User {
-    constructor(name, email, password) {
-      this.name = name;
-      this.email = email;
-      this.password = password; // Ensure to hash passwords
-      this.createdAt = new Date();
-      this.updatedAt = new Date();
-    }
-  }
-  
-  export default User;
-  
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
+});
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
