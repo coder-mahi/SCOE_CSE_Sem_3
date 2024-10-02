@@ -69,15 +69,12 @@
 // // });
 
 
-
-
 // src/server.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv'); 
-const userRoutes = require('./routes/users'); // Import user-related routes
+const dotenv = require('dotenv');
+const userRoutes = require('./routes/signup'); // Import user-related routes
 dotenv.config(); // Load environment variables from .env file
 
 const app = express();
