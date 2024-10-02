@@ -1,19 +1,23 @@
 .home-container {
   max-width: 800px;
   margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
   text-align: center;
 }
 
 .welcome-section {
-  background-color: #f7f7f7;
+  background-color: #f0f4f7;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-section h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
+  color: #333;
 }
 
 .welcome-section p {
@@ -28,4 +32,29 @@
 
 .welcome-section a:hover {
   text-decoration: underline;
+}
+
+.tasks-list {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.tasks-list h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.task-item {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.welcome-logo {
+  max-width: 300px;  /* Adjust the width as needed */
+  margin: auto; /* Spacing below the logo */
+  filter: drop-shadow(3px 10px 20px);
 }
