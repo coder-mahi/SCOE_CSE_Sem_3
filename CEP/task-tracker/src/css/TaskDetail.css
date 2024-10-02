@@ -1,0 +1,18 @@
+.taskdetail-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .taskdetail-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .taskdetail-container p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
