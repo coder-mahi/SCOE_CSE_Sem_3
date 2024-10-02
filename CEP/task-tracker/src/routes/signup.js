@@ -1,5 +1,3 @@
-// src/routes/signup.js
-
 const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/User'); // Adjust the path if needed
