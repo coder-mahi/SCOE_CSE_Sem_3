@@ -1,29 +1,44 @@
-import '../css/Home.css';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import TaskList from './TaskList'; // This is for showing tasks after login
-import logo from '../assets/logo.png';
+// src/components/Home.js
 
-function Home({ isAuthenticated }) {
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+const Home = () => {
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchHomeData = async () => {
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        navigate('/login'); // Redirect to login if no token is found
+        return;
+      }
+
+      try {
+        const response = await axios.get('http://localhost:5000/home', {
+          headers: {
+            Authorization: token, // Send token in Authorization header
+          },
+        });
+        setMessage(response.data.message);
+      } catch (error) {
+        console.error(error);
+        navigate('/login'); // Redirect to login if there is an error
+      }
+    };
+
+    fetchHomeData();
+  }, [navigate]);
+
   return (
-    <div className="home-container">
-      {isAuthenticated ? (
-        <>
-          <h2>Welcome back! Here are your tasks:</h2>
-          <TaskList />
-        </>
-      ) : (
-        <div className="welcome-section">
-           <img src={logo} alt="Welcome" className="welcome-logo" />
-          <h1>Welcome to the Task Tracker</h1>
-          <p>Manage your tasks efficiently and stay organized.</p>
-          <p><Link to="/signup">Create an account</Link> or <Link to="/login">login</Link> to get started!</p>
-        </div>
-      )}
+    <div>
+      <h2>Home</h2>
+      <p>{message}</p>
     </div>
   );
-}
+};
 
 export default Home;
-
-  

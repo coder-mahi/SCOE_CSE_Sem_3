@@ -1,140 +1,103 @@
-// // // src/server.js
-
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const dotenv = require('dotenv'); // Require dotenv to load environment variables
-// const userRoutes = require('./routes/users'); // Adjust the path if necessary
-// dotenv.config(); // Load environment variables from .env file
-// const bodyParser = require('body-parser');
-
-// const app = express();
-// const PORT = process.env.PORT || 5000;
-
-// // Middleware to parse JSON data
-// // Middleware to parse JSON bodies
-// app.use(express.json());
-// app.use('/api/users', require('./routes/signup'));
-
-// // Connect to MongoDB and start server...
-// app.use(bodyParser.json()); 
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-
-// // Middleware
-// app.use(cors({
-//     origin:'http://localhost:3000'
-// }));
-
-// app.use(express.json());
-
-// // app.post('/api/users/signup',(req,res)=>{
-
-// // });
-
-// mongoose.connect(process.env.MONGODB_URI)
-//     .then(() => console.log('MongoDB connected'))
-//     .catch(err => console.error('MongoDB connection error:', err));
-
-// // Routes
-// app.use('/api/users', userRoutes); // Use your users route
-
-// app.listen(PORT, () => {
-//     console.log(`Server is running on http://localhost:${PORT}`);
-// });
-
-
-// // const express = require('express');
-// // const mongoose = require('mongoose');
-// // const cors = require('cors');
-// // const userRoutes = require('./routes/users');
-
-// // const app = express();
-// // const PORT = process.env.PORT || 5000;
-
-// // // Middleware
-// // app.use(cors());
-// // app.use(express.json()); // For parsing application/json
-
-// // // MongoDB Connection
-// // mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-// //     .then(() => console.log('MongoDB connected!'))
-// //     .catch(err => console.error('MongoDB connection error:', err));
-
-// // // Routes
-// // app.use('/api/users', userRoutes); // Use your users route
-
-// // app.listen(PORT, () => {
-// //     console.log(`Server is running on http://localhost:${PORT}`);
-// // });
-
-
-// src/server.js
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const dotenv = require('dotenv');
-// const userRoutes = require('./routes/signup'); // Import user-related routes
-// dotenv.config(); // Load environment variables from .env file
-
-// const app = express();
-// const PORT = process.env.PORT || 5000;
-
-// // Middleware
-// app.use(cors({
-//     origin: 'http://localhost:3000', // Allow requests from your React frontend
-// }));
-// app.use(express.json()); // Use express's built-in body parser
-
-// // Routes
-// app.use('/api/users', userRoutes); // User routes (for signup, login, etc.)
-
-// // MongoDB Connection
-// mongoose.connect(process.env.MONGODB_URI, { 
-//     useNewUrlParser: true, 
-//     useUnifiedTopology: true 
-// })
-//     .then(() => console.log('MongoDB connected'))
-//     .catch(err => console.error('MongoDB connection error:', err));
-
-// // Start the server
-// app.listen(PORT, () => {
-//     console.log(`Server is running on http://localhost:${PORT}`);
-// });
-
-
-
-
-// working
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv'); 
-const userRoutes = require('./routes/signup'); // Make sure this is the correct path to your signup routes
-dotenv.config(); // Load environment variables from .env file
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = 5000;
 
-// Middleware
-app.use(cors({
-    origin: 'http://localhost:3000', // Allow requests from your React frontend
-}));
-app.use(express.json()); // Use express's built-in body parser
+app.use(express.json());
+app.use(cors());
 
-// Routes
-app.use('/api/users', userRoutes); // User routes for signup, login, etc.
+// MongoDB connection without deprecated options
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI, { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
-})
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error('MongoDB connection error:', err));
-
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Mongoose Schema and Model
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true },
+  email: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
 });
 
+const User = mongoose.model('User', userSchema);
+
+// Signup Route
+app.post('/signup', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  if (!username || !email || !password) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: 'Email already in use' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, email, password: hashedPassword });
+    await newUser.save();
+
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (err) {
+    console.error('Error during signup:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Login Route
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid email or password' });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: 'Invalid email or password' });
+    }
+
+    // Check if JWT_SECRET is defined
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ error: 'JWT secret is not configured' });
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.status(200).json({ token });
+  } catch (err) {
+    console.error('Error during login:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Protected Home Route
+app.get('/home', (req, res) => {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.status(200).json({ message: `Welcome back, user ${decoded.id}` });
+  } catch (err) {
+    res.status(401).json({ error: 'Invalid token' });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

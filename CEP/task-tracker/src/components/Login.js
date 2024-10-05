@@ -1,49 +1,76 @@
-import React, { useState } from 'react';
-import axios from 'axios'; // Make sure to install axios if you haven't already
-import '../css/Login.css';
+// src/components/Login.js
 
-function Login({ setIsAuthenticated }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+const Login = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await axios.post('/api/login', { email, password });
-      if (response.status === 200) {
-        setIsAuthenticated(true);
-        // Optionally store user data or token in localStorage or context
+      const response = await axios.post('http://localhost:5000/login', formData);
+      const { token } = response.data;
+      
+      // Store the JWT token in localStorage
+      localStorage.setItem('token', token);
+      setErrorMessage('');
+
+      // Redirect to home page after successful login
+      navigate('/home');
+    } catch (error) {
+      if (error.response) {
+        setErrorMessage(error.response.data.error);
+      } else {
+        setErrorMessage('Error logging in');
       }
-    } catch (err) {
-      setError(err.response?.data?.message || 'Invalid credentials');
     }
   };
 
   return (
-    <div className="login-container">
+    <div>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        {error && <p className="error-message">{error}</p>}
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div>
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <button type="submit">Login</button>
       </form>
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
     </div>
   );
-}
+};
 
 export default Login;
