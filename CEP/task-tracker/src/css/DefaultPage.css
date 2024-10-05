@@ -1,0 +1,25 @@
+/* src/css/App.css */
+
+.default-page {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .default-page h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .default-page p {
+    font-size: 1.2rem;
+  }
+  
+  .default-page a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .default-page a:hover {
+    text-decoration: underline;
+  }
+  

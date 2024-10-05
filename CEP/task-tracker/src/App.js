@@ -6,8 +6,9 @@ import TaskList from './components/TaskList'; // Import TaskList component
 import Footer from './components/Footer'; // Import Footer component
 import Signup from './components/Signup'; // Import Signup component
 import Login from './components/Login'; // Import Login component
-// import Home from './components/Home'; // Import Home component
+//import Home from './components/Home'; // Import Home component
 import Navbar from './components/Navbar'; // Import Navbar component
+import DefaultPage from './components/DefaultPage'; // Import DefaultPage component
 import './App.css'; // Import CSS for App
 
 const App = () => {
@@ -35,16 +36,13 @@ const App = () => {
     <Router>
       <div className="container">
         <Routes>
-          {/* Route for Signup and Login */}
-          <Route path="/" element={
-            <div>
-              <h1>Task Tracker</h1>
-              <p>Your personal task management tool</p>
-              <Signup onSignup={handleLogin} /> {/* Pass handleLogin to Signup */}
-              <Login onLogin={handleLogin} /> {/* Pass handleLogin to Login */}
-            </div>
-          } />
+          {/* Route for the Default Page */}
+          <Route path="/" element={<DefaultPage />} />
           
+          {/* Route for Signup and Login */}
+          <Route path="/signup" element={<Signup onSignup={handleLogin} />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+
           {/* Route for Home page */}
           <Route path="/home" element={
             <>
