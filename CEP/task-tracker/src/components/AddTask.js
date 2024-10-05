@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../css/styles.css';
+import '../css/AddTask.css';
 const AddTask = ({ onAdd }) => {
   const [task, setTask] = useState('');
 

@@ -1,0 +1,12 @@
+/* src/css/Profile.css */
+.profile-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.profile-container h1 {
+    color: #343a40; /* Darker text color */
+}

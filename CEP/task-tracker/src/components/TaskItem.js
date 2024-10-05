@@ -1,13 +1,17 @@
+// src/components/TaskItem.js
 import React from 'react';
-import '../css/styles.css';
+import '../css/TaskItem.css'; // Import CSS for TaskItem
 
 const TaskItem = ({ task, onDelete }) => {
-  return (
-    <li className="task-item">
-      <span>{task.task}</span>
-      <button onClick={() => onDelete(task.id)}>Delete</button>
-    </li>
-  );
+    return (
+        <div className="task-item">
+            <h3>{task.title}</h3>
+            <p>{task.description}</p>
+            <button className="delete-btn" onClick={() => onDelete(task.id)}>
+                Delete
+            </button>
+        </div>
+    );
 };
 
 export default TaskItem;

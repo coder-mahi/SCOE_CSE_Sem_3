@@ -1,5 +1,5 @@
 // src/components/Home.js
-import '../css/styles.css';
+import '../css/Home.css';
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';

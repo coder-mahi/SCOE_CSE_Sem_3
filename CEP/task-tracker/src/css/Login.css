@@ -1,61 +1,49 @@
-.login-container {
+/* Login.css */
+
+.login {
   max-width: 400px;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f9fa; /* Light background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.login-container h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
+.login h2 {
   text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
 }
 
-.login-container form {
+.login form {
   display: flex;
   flex-direction: column;
 }
 
-.login-container input {
+.login label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.login input {
   margin-bottom: 15px;
   padding: 10px;
-  font-size: 1.1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 16px;
 }
 
-.login-container button {
-  padding: 10px;
+.login button {
   background-color: #007bff;
   color: white;
-  font-size: 1.1rem;
   border: none;
   border-radius: 5px;
+  padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s;
 }
 
-.login-container button:hover {
-  background-color: #0056b3;
-}
-
-.error-message {
-  color: red;
-  margin-bottom: 10px;
-}
-
-.signup-redirect {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.signup-redirect a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.signup-redirect a:hover {
-  text-decoration: underline;
+.login button:hover {
+  background-color: #0056b3; /* Darker blue */
 }

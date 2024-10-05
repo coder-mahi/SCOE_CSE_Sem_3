@@ -1,31 +1,35 @@
-.tasklist-container {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .tasklist-container ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .tasklist-container ul li {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .tasklist-container ul li a {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .tasklist-container ul li a:hover {
-    text-decoration: underline;
-  }
-  
+/* TaskList.css */
+
+.task-list {
+  margin: 20px;
+}
+
+.task-list h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #007bff;
+}
+
+.task-item {
+  background: #f8f9fa; /* Light background */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item button {
+  background: #dc3545; /* Bootstrap danger color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.task-item button:hover {
+  background: #c82333; /* Darker red on hover */
+}

@@ -1,36 +1,49 @@
-.addtask-container {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .addtask-container h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-  }
-  
-  .addtask-container input, .addtask-container textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .addtask-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .addtask-container button:hover {
-    background-color: #555;
-  }
-  
+/* AddTask.css */
+
+.add-task {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f9fa; /* Light background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.add-task h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+.add-task form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-task label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-task input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.add-task button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-task button:hover {
+  background-color: #0056b3; /* Darker blue */
+}
