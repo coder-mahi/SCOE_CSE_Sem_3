@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-
 class Books {
     char *author;
     char *title;

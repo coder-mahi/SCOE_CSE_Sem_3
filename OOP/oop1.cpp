@@ -2,8 +2,7 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-class Bank
-{
+class Bank{
 public:
     string dname;
     int accno;

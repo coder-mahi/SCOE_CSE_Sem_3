@@ -1,26 +1,24 @@
-/* Design a C++ Class ‘Complex ‘ with data members for real and
-imaginary part. Provide default and parameterized constructors. Write a
-program to perform arithmetic operations of two complex numbers
-using operator overloading (using either member functions or friend
-functions).*/
-
-
 #include <iostream>
 using namespace std;
 class Complex {
 private:
-    double real;
-    double imaginary;
+    double real;    
+    double imaginary;    
 
 public:
-    Complex() : real(0), imaginary(0) {}
-    Complex(double r, double i) : real(r), imaginary(i) {}
+    Complex() {
+        real = 0;
+        imaginary = 0;
+    }
+    Complex(double r, double i) {
+        real = r;
+        imaginary = i;
+    }
 
-    // Operator overloads
     Complex operator+(const Complex& c) {
         return Complex(real + c.real, imaginary + c.imaginary);
     }
-
+    
     Complex operator-(const Complex& c) {
         return Complex(real - c.real, imaginary - c.imaginary);
     }
@@ -36,10 +34,11 @@ public:
                        (imaginary * c.real - real * c.imaginary) / denom);
     }
 
-    // Function to display the complex number
     void display() const {
-        cout << real << (imaginary >= 0 ? " + " : " - ") 
-                  << abs(imaginary) << "i";
+        if (imaginary >= 0)
+            cout << real << " + " << imaginary << "i" << endl;
+        else
+            cout << real << " - " << abs(imaginary) << "i" << endl;
     }
 };
 
@@ -49,20 +48,25 @@ int main() {
 
     cout << "First complex number: ";
     c1.display();
-    cout << "\nSecond complex number: ";
+
+    cout << "Second complex number: ";
     c2.display();
 
-    cout << "\n\nSum: ";
-    (c1 + c2).display();
-    
-    cout << "\nDifference: ";
-    (c1 - c2).display();
+    Complex sum = c1 + c2;
+    Complex diff = c1 - c2;
+    Complex prod = c1 * c2;
+    Complex quot = c1 / c2;
 
-    cout << "\nProduct: ";
-    (c1 * c2).display();
+    cout << "\nSum: ";
+    sum.display();
 
-    cout << "\nQuotient: ";
-    (c1 / c2).display();
+    cout << "Difference: ";
+    diff.display();
 
+    cout << "Product: ";
+    prod.display();
+
+    cout << "Quotient: ";
+    quot.display();
     return 0;
 }
