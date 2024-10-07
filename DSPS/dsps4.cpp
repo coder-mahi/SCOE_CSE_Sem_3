@@ -1,10 +1,10 @@
-//Exp 3
 #include<iostream>
 #include<stack>
 #include<string>
 #include<cstring>
 using namespace std;
-int presedence(char c){
+
+int precedence(char c){
     if(c=='+'||c=='-'){
         return 1;
     }else if(c=='*'||c=='/'){
@@ -14,29 +14,35 @@ int presedence(char c){
     }
     return 0;
 }
+
 bool isOperator(char c){
     if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'){
         return true;
     }
     return false;
 }
+
 string postFix(string infix){
     string postfix = "";
     stack<char> s;
     for(int i=0; i<infix.length(); i++){
-        char c = infix[i];
-        if(isOperator(infix[i])){
-            s.push(c);
-        }else if(isalnum(infix[i])){
-            postfix += c;
-        }else if(infix[i]=='('){
-            s.push('c');
-        }else if(infix[i]==')'){
-            while(s.top()!=')'){
-                postfix+=s.top();
+        char ch = infix[i];
+        if(isOperator(ch)){
+            while(!s.empty() && s.top() != '(' && precedence(s.top()) >= precedence(ch)){
+                postfix += s.top();
                 s.pop();
             }
-            s.pop();
+            s.push(ch);
+        }else if(isalnum(ch)){
+            postfix += ch;
+        }else if(ch=='('){
+            s.push(ch);
+        }else if(ch==')'){
+            while(s.top() != '('){
+                postfix += s.top();
+                s.pop();
+            }
+            s.pop(); // remove '('
         }
     }
     while (!s.empty()) {
@@ -45,6 +51,7 @@ string postFix(string infix){
     }
     return postfix;
 }
+
 int main(){
     string infix = "";
     cout<<"Enter Infix expression :"<<endl;
