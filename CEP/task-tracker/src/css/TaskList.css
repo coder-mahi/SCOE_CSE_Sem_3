@@ -1,35 +1,17 @@
-/* TaskList.css */
-
 .task-list {
-  margin: 20px;
+  padding: 20px;
+  border: 2px solid #4CAF50; /* Green border */
+  border-radius: 10px;
+  background-color: #f9f9f9; /* Light background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .task-list h2 {
-  text-align: center;
-  margin-bottom: 15px;
-  color: #007bff;
+  font-family: 'Arial', sans-serif;
+  color: #333; /* Dark text */
 }
 
-.task-item {
-  background: #f8f9fa; /* Light background */
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.task-item button {
-  background: #dc3545; /* Bootstrap danger color */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.task-item button:hover {
-  background: #c82333; /* Darker red on hover */
+.task-list p {
+  font-size: 1.2em;
+  color: #888; /* Gray text */
 }
