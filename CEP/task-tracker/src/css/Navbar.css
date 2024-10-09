@@ -1,34 +1,31 @@
+/* src/css/Navbar.css */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  background-color: #4CAF50; /* Green background */
+  background-color: #282c34;
+  padding: 1rem;
   color: white;
 }
 
-.navbar-logo {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
 .navbar-links {
-  list-style-type: none;
+  list-style: none;
   display: flex;
-  margin: 0;
-  padding: 0;
 }
 
 .navbar-links li {
   margin-left: 20px;
 }
 
-.navbar-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
+.logout-btn {
+  background-color: #ff4d4d; /* Red background */
+  color: white; /* White text */
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.navbar-links a:hover {
-  text-decoration: underline; /* Underline on hover */
+.logout-btn:hover {
+  background-color: #ff1a1a; /* Darker red on hover */
 }
