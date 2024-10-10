@@ -1,4 +1,5 @@
 /* src/css/Navbar.css */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -8,13 +9,28 @@
   color: white;
 }
 
+.navbar-logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 .navbar-links {
   list-style: none;
   display: flex;
+  gap: 20px;
 }
 
 .navbar-links li {
-  margin-left: 20px;
+  margin: 0;
+}
+
+.navbar-links a {
+  color: inherit; /* Inherit color from parent element */
+  text-decoration: none;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
 }
 
 .logout-btn {
@@ -24,8 +40,36 @@
   padding: 8px 16px;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 0.9rem; /* Smaller font size for button */
 }
 
 .logout-btn:hover {
   background-color: #ff1a1a; /* Darker red on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-toggle-btn {
+    display: block;
+    cursor: pointer;
+    padding: 8px;
+    background-color: transparent;
+    border: none;
+  }
+
+  .navbar-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .navbar-links.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    padding: 1rem;
+  }
 }
