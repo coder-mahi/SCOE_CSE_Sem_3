@@ -1,59 +1,59 @@
-/* Center the entire component */
-.signup {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  text-align: center;
-  display: grid; /* Add grid layout */
-  grid-template-columns: 1fr 1fr 1fr; /* Define three columns */
-}
+/* Signup.css */
 
-/* Style the form elements */
-label {
-  display: block;
-  margin-bottom: 10px;
-  grid-column: 2; /* Place labels in 2nd column */
-}
-
-input[type="text"], input[type="email"], input[type="password"] {
-  width: 100%;
-  height: 15px;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
   border-radius: 5px;
-  grid-column: 2; /* Place inputs in 2nd column */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 600px; /* Adjust width as needed */
+
 }
 
-button[type="submit"] {
+.signup h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+input[type="text"]{
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 1rem;
   width: 100%;
-  height: 40px;
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px;
+}
+.signup form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align fields horizontally */
+  width: 100%; /* Ensure form takes full width */
+}
+
+.signup label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.signup input {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.signup button {
+  background-color: #007bff;
+  color: white;
   border: none;
   border-radius: 5px;
+  padding: 10px;
   cursor: pointer;
-  grid-column: 2; /* Place button in 2nd column */
+  transition: background 0.3s;
 }
 
-button[type="submit"]:hover {
-  background-color: #3e8e41;
-}
-
-/* Style the error and success messages */
-.error-message {
-  color: red;
-  margin-bottom: 20px;
-  grid-column: 2; /* Place error message in 2nd column */
-}
-
-.success-message {
-  color: green;
-  margin-bottom: 20px;
-  grid-column: 2; /* Place success message in 2nd column */
+.signup button:hover {
+  background-color: #0056b3; /* Darker blue */
 }
