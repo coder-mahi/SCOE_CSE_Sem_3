@@ -1,49 +1,59 @@
-/* Signup.css */
-
+/* Center the entire component */
 .signup {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 20px;
+  background-color: #f9f9f9;
   border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  background-color: #f8f9fa; /* Light background */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.signup h2 {
   text-align: center;
+  display: grid; /* Add grid layout */
+  grid-template-columns: 1fr 1fr 1fr; /* Define three columns */
+}
+
+/* Style the form elements */
+label {
+  display: block;
+  margin-bottom: 10px;
+  grid-column: 2; /* Place labels in 2nd column */
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  height: 15px;
   margin-bottom: 20px;
-  color: #007bff;
-}
-
-.signup form {
-  display: flex;
-  flex-direction: column;
-}
-
-.signup label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.signup input {
-  margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  grid-column: 2; /* Place inputs in 2nd column */
 }
 
-.signup button {
-  background-color: #007bff;
-  color: white;
+button[type="submit"] {
+  width: 100%;
+  height: 40px;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px;
   border: none;
   border-radius: 5px;
-  padding: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  grid-column: 2; /* Place button in 2nd column */
 }
 
-.signup button:hover {
-  background-color: #0056b3; /* Darker blue */
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+/* Style the error and success messages */
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+  grid-column: 2; /* Place error message in 2nd column */
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 20px;
+  grid-column: 2; /* Place success message in 2nd column */
 }

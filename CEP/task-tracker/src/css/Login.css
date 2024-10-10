@@ -1,49 +1,64 @@
-/* Login.css */
-
-.login {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f8f9fa; /* Light background */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.login h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #007bff;
-}
-
-.login form {
+/* Basic styles for the container */
+.login-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 300px; /* Adjust width as needed */
 }
 
-.login label {
-  margin-bottom: 5px;
+/* Styles for the heading */
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Styles for the form */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Styles for form labels */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
   font-weight: bold;
 }
 
-.login input {
-  margin-bottom: 15px;
-  padding: 10px;
+/* Styles for input fields */
+input[type="email"],
+input[type="password"] {
+  padding: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
-.login button {
-  background-color: #007bff;
+/* Styles for the submit button */
+button[type="submit"] {
+  padding: 1rem;
+  background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 3px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.2s ease-in-out;
 }
 
-.login button:hover {
-  background-color: #0056b3; /* Darker blue */
+/* Hover effect for the submit button */
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+/* Styles for the error message */
+p.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 1rem;
 }
