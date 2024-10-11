@@ -97,8 +97,35 @@ app.get('/home', (req, res) => {
   }
 });
 
+
+
+app.get('/api/user/profile', async (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1]; // Get token after "Bearer"
+
+  if (!token) {
+      return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await User.findById(decoded.id).select('-password');
+
+      if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+      }
+
+      res.status(200).json({ username: user.username });
+  } catch (err) {
+      console.error('Error fetching user profile:', err);
+      res.status(401).json({ error: 'Invalid token' });
+  }
+});
+
+
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
 console.log('MONGODB_URI:', process.env.MONGODB_URI); // This will show if it's set correctly
+
