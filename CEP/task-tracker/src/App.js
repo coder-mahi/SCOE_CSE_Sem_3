@@ -83,6 +83,7 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import DefaultPage from './components/DefaultPage'; // Import DefaultPage
 import './App.css';
+import Profile from './components/Profile';
 
 const App = () => {
     const [tasks, setTasks] = useState([]); // State to store tasks
@@ -140,6 +141,7 @@ const App = () => {
 
                     {/* Catch-all route to handle undefined paths, redirect to DefaultPage */}
                     <Route path="*" element={<Navigate to={isLoggedIn ? "/home" : "/defaultpage"} />} />
+                    <Route path='/profile' element={<Profile/>}></Route>
                 </Routes>
             </div>
         </Router>
