@@ -1,14 +1,14 @@
 // // src/App.js
 // import React, { useState } from 'react';
-// import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Import Router, Route, Routes, and Navigate
-// import AddTask from './components/AddTask'; // Import AddTask component
-// import TaskList from './components/TaskList'; // Import TaskList component
-// import Footer from './components/Footer'; // Import Footer component
-// import Signup from './components/Signup'; // Import Signup component
-// import Login from './components/Login'; // Import Login component
-// import Navbar from './components/Navbar'; // Import Navbar component
-// import DefaultPage from './components/DefaultPage'; // Import DefaultPage component
-// import './App.css'; // Import CSS for App
+// import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+// import AddTask from './components/AddTask';
+// import TaskList from './components/TaskList';
+// import Footer from './components/Footer';
+// import Signup from './components/Signup';
+// import Login from './components/Login';
+// import Navbar from './components/Navbar';
+// import DefaultPage from './components/DefaultPage';
+// import './App.css';
 
 // const App = () => {
 //     const [tasks, setTasks] = useState([]); // State to store tasks
@@ -45,8 +45,10 @@
 //                     {/* Route for the Default Page */}
 //                     <Route path="/" element={<DefaultPage />} />
 
-//                     {/* Route for Signup and Login */}
+//                     {/* Route for Signup */}
 //                     <Route path="/signup" element={isLoggedIn ? <Navigate to="/home" /> : <Signup onSignup={handleLogin} />} />
+                    
+//                     {/* Route for Login */}
 //                     <Route path="/login" element={isLoggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />} />
 
 //                     {/* Route for Home page */}
@@ -68,6 +70,8 @@
 // export default App;
 
 
+
+
 // src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
@@ -77,7 +81,7 @@ import Footer from './components/Footer';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
-import DefaultPage from './components/DefaultPage';
+import DefaultPage from './components/DefaultPage'; // Import DefaultPage
 import './App.css';
 
 const App = () => {
@@ -110,10 +114,12 @@ const App = () => {
     return (
         <Router>
             <div className="container">
-                <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} /> {/* Pass props to Navbar */}
+                {/* Pass props to Navbar */}
+                <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+
                 <Routes>
-                    {/* Route for the Default Page */}
-                    <Route path="/" element={<DefaultPage />} />
+                    {/* Route for the Default Page (accessible when not logged in) */}
+                    <Route path="/defaultpage" element={isLoggedIn ? <Navigate to="/home" /> : <DefaultPage />} />
 
                     {/* Route for Signup */}
                     <Route path="/signup" element={isLoggedIn ? <Navigate to="/home" /> : <Signup onSignup={handleLogin} />} />
@@ -121,7 +127,7 @@ const App = () => {
                     {/* Route for Login */}
                     <Route path="/login" element={isLoggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />} />
 
-                    {/* Route for Home page */}
+                    {/* Route for Home page (accessible only when logged in) */}
                     <Route path="/home" element={isLoggedIn ? (
                         <>
                             <AddTask onAdd={addTask} /> {/* AddTask Component */}
@@ -129,8 +135,11 @@ const App = () => {
                             <Footer /> {/* Footer component */}
                         </>
                     ) : (
-                        <Navigate to="/login" />
+                        <Navigate to="/defaultpage" /> // Redirect to DefaultPage if not logged in
                     )} />
+
+                    {/* Catch-all route to handle undefined paths, redirect to DefaultPage */}
+                    <Route path="*" element={<Navigate to={isLoggedIn ? "/home" : "/defaultpage"} />} />
                 </Routes>
             </div>
         </Router>
