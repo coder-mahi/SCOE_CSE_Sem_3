@@ -99,6 +99,29 @@ app.get('/home', (req, res) => {
 
 
 
+// app.get('/api/user/profile', async (req, res) => {
+//   const token = req.headers.authorization?.split(" ")[1]; // Get token after "Bearer"
+
+//   if (!token) {
+//       return res.status(401).json({ error: 'Unauthorized' });
+//   }
+
+//   try {
+//       const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//       const user = await User.findById(decoded.id).select('-password');
+
+//       if (!user) {
+//           return res.status(404).json({ error: 'User not found' });
+//       }
+
+//       res.status(200).json({ username: user.username });
+//   } catch (err) {
+//       console.error('Error fetching user profile:', err);
+//       res.status(401).json({ error: 'Invalid token' });
+//   }
+// });
+
+
 app.get('/api/user/profile', async (req, res) => {
   const token = req.headers.authorization?.split(" ")[1]; // Get token after "Bearer"
 
@@ -114,7 +137,12 @@ app.get('/api/user/profile', async (req, res) => {
           return res.status(404).json({ error: 'User not found' });
       }
 
-      res.status(200).json({ username: user.username });
+      // Return username, email, and profile picture
+      res.status(200).json({
+          username: user.username,
+          email: user.email, // Ensure 'email' is available in your User model
+          profilePicture: user.profilePicture // Ensure 'profilePicture' is available in your User model
+      });
   } catch (err) {
       console.error('Error fetching user profile:', err);
       res.status(401).json({ error: 'Invalid token' });
