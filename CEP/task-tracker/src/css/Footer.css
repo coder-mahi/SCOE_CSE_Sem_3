@@ -1,13 +1,11 @@
-/* Footer.css */
-
 .footer {
-    background-color: #343a40; /* Dark color */
-    color: white;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
     text-align: center;
-    padding: 15px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .footer p {
