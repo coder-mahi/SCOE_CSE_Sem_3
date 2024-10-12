@@ -172,7 +172,11 @@ const App = () => {
     // Function to add a task
     const addTask = (task) => {
         const id = Math.floor(Math.random() * 10000) + 1; // Generate a random ID for the task
-        const newTask = { id, ...task }; // Create a new task object
+        const newTask = { 
+            id, 
+            ...task, 
+            createdAt: new Date().toLocaleString() // Add the current date and time as task creation time
+        };
         setTasks([...tasks, newTask]); // Update the tasks state
     };
 
