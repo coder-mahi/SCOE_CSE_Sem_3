@@ -13,9 +13,7 @@ const AddTask = ({ onAdd }) => {
       alert('Please add a title and description for the task!');
       return;
     }
-
-    onAdd({ title, description }); // Pass both title and description
-
+    onAdd({ title, description }); 
     setTitle('');
     setDescription('');
   };
