@@ -1,0 +1,17 @@
+/* src/css/TaskCalendar.css */
+.task-calendar {
+    padding: 20px;
+  }
+  
+  .marked {
+    background-color: #d4edda; /* Light green background for marked dates */
+  }
+  
+  .task-details {
+    margin-top: 20px;
+  }
+  
+  .tick {
+    color: green; /* Color for the tick mark */
+  }
+  

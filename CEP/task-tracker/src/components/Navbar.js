@@ -13,6 +13,9 @@ const Navbar = ({ isLoggedIn, onLogout }) => {
                 {/* Add Task link visible when logged in */}
                 {isLoggedIn && <li><Link to="/addtask">Add Task</Link></li>}
 
+                {/* Task Calendar link visible when logged in */}
+                {isLoggedIn && <li><Link to="/calendar">Task Calendar</Link></li>}
+
                 {isLoggedIn ? (
                     <>
                         <li><Link to="/profile">Profile</Link></li>

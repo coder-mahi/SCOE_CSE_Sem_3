@@ -4,40 +4,40 @@ import '../css/AddTask.css';
 const AddTask = ({ onAdd }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [reminderTime, setReminderTime] = useState('');
+  const [reminder, setReminder] = useState(''); // New state for reminder
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !description || !reminderTime) {
-      alert('Please fill out all fields!');
+    if (!title || !description || !reminder) {
+      alert('Please add a title, description, and reminder for the task!');
       return;
     }
 
-    onAdd({ title, description, reminderTime });
+    // Pass reminderTime as reminder
+    onAdd({ title, description, reminderTime: reminder }); // Include reminderTime in the task
     setTitle('');
     setDescription('');
-    setReminderTime('');
+    setReminder(''); // Reset reminder field
   };
 
   return (
     <form className="add-task-form" onSubmit={onSubmit}>
       <input
         type="text"
-        placeholder="Task Title"
+        placeholder="Add task title..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <textarea
-        placeholder="Task Description"
+        placeholder="Add task description..."
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <label>Reminder Time:</label>
       <input
-        type="datetime-local"
-        value={reminderTime}
-        onChange={(e) => setReminderTime(e.target.value)}
+        type="datetime-local" // Input for datetime
+        value={reminder}
+        onChange={(e) => setReminder(e.target.value)}
       />
       <button type="submit">Add Task</button>
     </form>
