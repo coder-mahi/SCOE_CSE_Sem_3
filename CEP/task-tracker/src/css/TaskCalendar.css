@@ -60,3 +60,8 @@ h2 {
     color: green; /* Green color for the tick */
     font-weight: bold; /* Bold tick for emphasis */
 }
+/* src/components/TaskCalendar.css */
+.highlight {
+    background-color: green !important;
+    color: white;
+}

@@ -1,6 +1,5 @@
 // src/components/Home.js
 import '../css/Home.css';
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -38,6 +37,7 @@ const Home = () => {
     <div>
       <h2>Home</h2>
       <p>{message}</p>
+      {/* Removed TaskCalendar */}
     </div>
   );
 };

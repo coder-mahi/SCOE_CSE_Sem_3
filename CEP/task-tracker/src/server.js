@@ -189,39 +189,6 @@ app.get('/gettasks', async (req, res) => {
 });
 
 
-// app.post('/addtask', async (req, res) => {
-//   const token = req.headers.authorization?.split(" ")[1];
-
-//   if (!token) {
-//     return res.status(401).json({ error: 'Unauthorized' });
-//   }
-
-//   try {
-//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-//     const userId = decoded.id;
-
-//     const { title, description, reminderTime } = req.body;
-
-//     if (!title || !description || !reminderTime) {
-//       return res.status(400).json({ error: 'All fields are required' });
-//     }
-
-//     const task = new Task({ title, description, userId, reminderTime });
-//     await task.save();
-
-//     // Schedule the email reminder
-//     scheduleEmailReminder(task);
-
-//     res.status(201).json({ message: 'Task added successfully', task });
-//   } catch (err) {
-//     console.error('Error adding task:', err);
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// });
-
-
-
-
 // Login Route
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;

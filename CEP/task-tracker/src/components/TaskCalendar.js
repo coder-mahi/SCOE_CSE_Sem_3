@@ -1,53 +1,54 @@
 // src/components/TaskCalendar.js
+import React, { useEffect, useState, useContext } from 'react';
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import format from 'date-fns/format';
+import parse from 'date-fns/parse';
+import startOfWeek from 'date-fns/startOfWeek';
+import getDay from 'date-fns/getDay';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import enUS from 'date-fns/locale/en-US';
+import { TaskContext } from '../context/TaskContext'; // Import the TaskContext
 
-import React, { useState, useEffect } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import '../css/TaskCalendar.css'; // Create this CSS file for custom styles
+const locales = {
+    'en-US': enUS,
+};
 
-const TaskCalendar = ({ tasks }) => {
-  const [value, setValue] = useState(new Date()); // State to hold the selected date
-  const [markedDates, setMarkedDates] = useState({}); // State to hold marked dates
+const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek,
+    getDay,
+    locales,
+});
 
-  // Effect to prepare marked dates based on tasks
-  useEffect(() => {
-    const dates = {};
-    tasks.forEach((task) => {
-      const date = new Date(task.reminderTime).toLocaleDateString();
-      dates[date] = (dates[date] || 0) + 1; // Count tasks for the date
-    });
-    setMarkedDates(dates);
-  }, [tasks]);
+const TaskCalendar = () => {
+    const { tasks } = useContext(TaskContext); // Access tasks from context
+    const [events, setEvents] = useState([]);
 
-  const tileClassName = ({ date, view }) => {
-    if (view === 'month') {
-      const dateString = date.toLocaleDateString();
-      return markedDates[dateString] ? 'marked' : null; // Apply class if tasks exist for the date
-    }
-  };
+    useEffect(() => {
+        // Map tasks to calendar events
+        const mappedEvents = tasks.map((task) => ({
+            title: task.title,
+            start: new Date(task.reminderTime), // Ensure correct date format
+            end: new Date(task.reminderTime), // Assuming single-day task
+            allDay: true,
+        }));
 
-  return (
-    <div className="task-calendar">
-      <h2>Task Calendar</h2>
-      <Calendar
-        onChange={setValue}
-        value={value}
-        tileClassName={tileClassName} // Use the function to set tile classes
-      />
-      <div className="task-details">
-        <h3>Tasks on {value.toLocaleDateString()}:</h3>
-        <ul>
-          {tasks
-            .filter((task) => new Date(task.reminderTime).toLocaleDateString() === value.toLocaleDateString())
-            .map((task) => (
-              <li key={task.id}>
-                {task.title} <span className="tick">✔️</span>
-              </li>
-            ))}
-        </ul>
-      </div>
-    </div>
-  );
+        setEvents(mappedEvents); // Update the calendar with mapped events
+    }, [tasks]); // Re-run when tasks change
+
+    return (
+        <div>
+            <h2>Task Calendar</h2>
+            <Calendar
+                localizer={localizer}
+                events={events}
+                startAccessor="start"
+                endAccessor="end"
+                style={{ height: 500 }}
+            />
+        </div>
+    );
 };
 
 export default TaskCalendar;
