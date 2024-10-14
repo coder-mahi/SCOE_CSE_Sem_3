@@ -1,0 +1,279 @@
+[33mcommit 234d103e12c85c0c973b61d09ea42efb582c6cda[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31mSCOE_CSE_Sem_3/main[m[33m)[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sat Oct 12 22:33:34 2024 +0530
+
+    Log out after refresh issue solved
+
+[33mcommit fed7d70114125ddfc6bab2888fa702fbf04fa3eb[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sat Oct 12 11:33:37 2024 +0530
+
+    TaskCalendar.css
+
+[33mcommit 162f906a7d774f2f812db5746f3901db7575554f[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sat Oct 12 11:31:11 2024 +0530
+
+    Fully functional added TaskCalender to view upcoming tasks and previous one
+
+[33mcommit a47260f7fa96ff96b32127bba818f0fc247ee40f[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sat Oct 12 10:30:24 2024 +0530
+
+    Reminder functionality added
+
+[33mcommit 342db7a314a71ebcea1b5278341065fc3d29dc95[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sat Oct 12 10:15:07 2024 +0530
+
+    TaskList major change added time
+
+[33mcommit 482fb5f41c1a1fc901f397c6f02a8e51fa7a26ba[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sat Oct 12 10:05:19 2024 +0530
+
+    style changes
+
+[33mcommit 0047697dbe23b43cd6fcec83e664997b7187ff14[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 11 22:33:52 2024 +0530
+
+    css design changes (minor)
+
+[33mcommit 9dd58e00f7a142c3c8f0fc59fab45c5a18517d48[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 11 22:23:10 2024 +0530
+
+    Profile.js
+
+[33mcommit e03f5343c26e28d9e698f3367677eef81b929916[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 11 21:53:35 2024 +0530
+
+    Proper designing of Home page and Profile with LottieAnimation gif
+
+[33mcommit 5e0179e2a581b7ae03e2c309364a4cff11e9ce19[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 11 21:29:23 2024 +0530
+
+    Design changes of AddTask home page and footer with navbar
+
+[33mcommit 87f15bf05154b266b2b3e8bda7b5b486cb0ccc9b[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 11 21:18:01 2024 +0530
+
+    succesfully fetching profile username on Profile.js
+
+[33mcommit 6312937d4935ac9c1c413d72c7e9ffa2faa87fd0[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 11 20:53:05 2024 +0530
+
+    Profile.js issue solved ready for styling
+
+[33mcommit 47d1ed498cf27aecc139d607c241741ce7cd3feb[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 11 20:49:49 2024 +0530
+
+    DefaultPage.js issued solved
+
+[33mcommit 0d491d2235746dcd1aed5448ccb833c203b8f863[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 11 00:06:43 2024 +0530
+
+    css editing
+
+[33mcommit ed609b8fc1239735ffe7ec5e401b85e74e33a6b3[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Thu Oct 10 23:30:54 2024 +0530
+
+    Navbar.css
+
+[33mcommit 72fa6d7b1db82bc1aa2430ee54b9a62dbc4481d7[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Thu Oct 10 23:21:07 2024 +0530
+
+    Styles css
+
+[33mcommit 544172e0d7a7705feb1a189857a168f5e726d6a3[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Thu Oct 10 22:57:42 2024 +0530
+
+    removed unwanted
+
+[33mcommit ea2543a2f65a9cc3afb6efba1850bdeef8b03f46[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 9 21:06:56 2024 +0530
+
+    Fully working model : with sign in , signup, adding task, logout option only after login
+
+[33mcommit c30fef6bc96eae7749c1fd7f0bd9f78bc8196ac2[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 9 20:58:00 2024 +0530
+
+    design css changes
+
+[33mcommit 8771957a5c5be6875f9a01fd1e92bac462c9c3b9[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 9 20:57:39 2024 +0530
+
+    Task visibility solved
+
+[33mcommit d25c83697800ff6c027b169076924a1284da051a[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 9 20:57:10 2024 +0530
+
+    removing server from dir
+
+[33mcommit 0132043e082fdc6fb5204b0b17a5491ad2ebfeed[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 9 20:17:37 2024 +0530
+
+    server.js
+
+[33mcommit 42cb0aff2869efd6b68344834e7b30acb9a2247e[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 9 20:07:37 2024 +0530
+
+    server.js in new dir called server inside task-tracker
+
+[33mcommit b6c56b5c72f92e4838a821e734b270e2d6222fb4[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 9 20:02:01 2024 +0530
+
+    json
+
+[33mcommit dca9ded29259a911a9bfb7dad4afbdc99c78ebb6[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 9 19:37:41 2024 +0530
+
+    oop3.exe
+
+[33mcommit b67db23f98cc62559e93cdbaca38bc082c7bf684[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Tue Oct 8 09:11:35 2024 +0530
+
+    dsps6.cpp
+
+[33mcommit 1035a59e0c70570b835175f723a49cf37e99490a[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Tue Oct 8 09:11:24 2024 +0530
+
+    dsps5.cpp
+
+[33mcommit ec4564c4f368b36f46e72a1c6162e1df908caf10[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Tue Oct 8 09:03:32 2024 +0530
+
+    dsps2.cpp
+
+[33mcommit fea224527318090ff14ba0589c77d7e686d4e80c[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Tue Oct 8 08:57:11 2024 +0530
+
+    dsps3.cpp changes
+
+[33mcommit 6e9788f4911d14c9c401756067f0dcd09a85e93a[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Tue Oct 8 08:56:42 2024 +0530
+
+    dsps3.cpp
+
+[33mcommit 8de2e4252afd79cd4eb0ffad097ccda3ce345521[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Mon Oct 7 20:24:24 2024 +0530
+
+    dsps4.cpp
+
+[33mcommit ce9765c7eb9f5605cbee9511982676e807ed47ef[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Mon Oct 7 20:05:28 2024 +0530
+
+    dsps1.cpp
+
+[33mcommit f5f7861d6fb5180873f1475a9c26b8cbd54c793b[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sun Oct 6 20:51:58 2024 +0530
+
+    oop2.cpp
+
+[33mcommit d44f3f20203aa2e2302907810da8dd7c1aaa4a13[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sun Oct 6 00:54:23 2024 +0530
+
+    working overall with unique design .... some components are pending
+
+[33mcommit 517191f498e7c845012ff7c285e83fd1fc03ea0f[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sun Oct 6 00:39:12 2024 +0530
+
+    Components Added with CSS
+
+[33mcommit 9ef59e12149e9f4c3d2ec795f10f1abd2dd85b8b[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sat Oct 5 23:49:14 2024 +0530
+
+    Components commit
+
+[33mcommit 35ea6eb11e59ad60ac1670e1c4f850f47909c9f7[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Sat Oct 5 23:41:56 2024 +0530
+
+    Succesfully Signup, Login operation working (Huge change) deletion of exceptional files
+
+[33mcommit dfdee0d1ab77b64e48080b50237391fe6c0901da[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Fri Oct 4 01:12:53 2024 +0530
+
+    removed unecessary
+
+[33mcommit 4e50b23b08950ba6a851780b8b1a0a1bebb869ba[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Thu Oct 3 23:51:00 2024 +0530
+
+    successfully data insert operation commit
+
+[33mcommit 0dfe53f16d8f15aed848db152e10f8e849de1a3e[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 2 23:18:06 2024 +0530
+
+    multiple request bodies
+
+[33mcommit 1ec0b15fcedac6b786677a6f309ca7c9eae8aa8c[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 2 22:52:33 2024 +0530
+
+    signup page send request body now
+
+[33mcommit 8d5cb4b989de7eea6242ef10f9eaf1e5dd039e03[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 2 22:00:33 2024 +0530
+
+    For making code changes initial commit
+
+[33mcommit ffb8d0ae4d855c63113d40ac8226879faf4ac49a[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 2 19:38:13 2024 +0530
+
+    succesfully checking the already exists user
+
+[33mcommit 4f3bb5ef2e7ecd1b16346158b429e0b1413d4c5c[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 2 19:14:46 2024 +0530
+
+    db connection issue solved
+
+[33mcommit 5b87a5bb0eb6c398a2fceb2f6d0e1ec843fd4c66[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 2 18:26:48 2024 +0530
+
+    Backend Added
+
+[33mcommit aa42f1060c3c5396d7f4146f97e11eb53cfcfe25[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 2 18:26:21 2024 +0530
+
+    server.js
+
+[33mcommit 7121c2f3debbd25465f7aff96bd232f612ed617b[m
+Author: MAHESH <maheshshinde9100@gmail.com>
+Date:   Wed Oct 2 17:46:31 2024 +05
