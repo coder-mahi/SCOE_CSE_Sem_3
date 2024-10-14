@@ -7,7 +7,8 @@ const TaskItem = ({ task, onDelete }) => {
         <div className="task-item">
             <h3>{task.title}</h3> {/* Displaying task title */}
             <p>{task.description}</p> {/* Displaying task description */}
-            <button className="delete-btn" onClick={() => onDelete(task.id)}>
+            <p><strong>Reminder:</strong> {new Date(task.reminderTime).toLocaleString()}</p>
+            <button className="delete-btn" onClick={() => onDelete(task._id)}>
                 Delete
             </button>
         </div>

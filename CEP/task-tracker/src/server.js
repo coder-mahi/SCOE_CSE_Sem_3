@@ -216,6 +216,37 @@ app.post('/login', async (req, res) => {
   }
 });
 
+// Delete Task Route
+app.delete('/deletetask/:id', async (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+
+    const task = await Task.findById(req.params.id);
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    // Ensure the task belongs to the user
+    if (!task.userId.equals(userId)) {
+      return res.status(403).json({ error: 'Forbidden: You do not have permission to delete this task' });
+    }
+
+    await Task.deleteOne({ _id: req.params.id });
+    res.status(200).json({ message: 'Task deleted successfully' });
+  } catch (err) {
+    console.error('Error deleting task:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 // Protected Home Route
 app.get('/home', (req, res) => {
   const token = req.headers.authorization;
