@@ -51,7 +51,6 @@ const TaskReport = () => {
         const todayTasksList = getTodayTasks();
         setTodayTasks(todayTasksList);
     }, [tasks]);
-
     return (
         <div className='TaskReport-container'>
             <h2>Today's Task Report</h2>

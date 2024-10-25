@@ -1,9 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-// Create the TaskContext
 export const TaskContext = createContext();
-
-// Create a provider component
 export const TaskProvider = ({ children }) => {
     const [tasks, setTasks] = useState([]);
     const token = localStorage.getItem('token'); // Get JWT token from local storage
