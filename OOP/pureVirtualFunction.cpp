@@ -1,7 +1,6 @@
 #include<iostream>
 using namespace std;
-class shape
-{
+class shape{
     public:
     virtual void calculateArea()=0;
 };
