@@ -27,7 +27,8 @@ Complex operator*(const Complex& c1,const Complex& c2){
                     (c1.real*c2.img + c1.img*c2.real));     // adbc
 }
 Complex operator/(const Complex& c1,const Complex& c2){
-    float denom = (c2.real*c2.real,c2.img*c2.img);
+    float denom = c2.real*c2.real  + c2.img*c2.img;
+
     return Complex((c1.real*c2.real + c2.img*c1.img)/denom,     //acdb
                     (c1.img*c2.real - c1.real*c2.img)/denom);   //bcad
 }
