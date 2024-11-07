@@ -37,7 +37,7 @@
         for(int i =0;i<size;i++){
             cout<<arr[i]<<" ";
         }
-        cout<<"\n"<<endl;
+        cout<<endl;
     }
   };
   int main(){
@@ -46,11 +46,11 @@
     
     SelectionSort<int> obj1(arr1,5);
     SelectionSort<float> obj2(arr2,5);
-
+    cout<<"Integer Array :"<<endl;
     obj1.display();
     obj1.sort();
     obj1.display();
-
+    cout<<"\nFloating Point Array :"<<endl;
     obj2.display();
     obj2.sort();
     obj2.display();
