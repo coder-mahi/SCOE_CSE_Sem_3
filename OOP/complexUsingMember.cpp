@@ -15,13 +15,14 @@ Complex operator-(const Complex& c){
     return Complex(real-c.real,img-c.img);
 }
 Complex operator*(const Complex& c){
-    return Complex((real*img - c.real*c.img),       // abcd
-                    (real*c.img + img*c.real));     // adbc
+   return Complex((real*img - c.real*c.img),       // ac-bd
+                    (real*c.img + img*c.real));   
 }
 Complex operator/(const Complex& c){
-    float denom = c.real*c.real  + c.img*c.img;
-    return Complex((real*c.real + c.img*img)/denom,     //acdb
-                    (img*c.real - real*c.img)/denom);   //bcad
+       float denom = c.real*c.real  + c.img*c.img;
+
+    return Complex((real*c.real + c.img*img)/denom,     //ac+bd/denom
+                    (img*c.real - real*c.img)/denom);   //bc-ad/denom
 }
     void display() const{
         cout<<"real : "<<real<<"\timaginary : "<<img<<endl;

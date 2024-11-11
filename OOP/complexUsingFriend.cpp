@@ -23,18 +23,18 @@ Complex operator-(const Complex& c1,const Complex& c2){
     return Complex(c1.real-c2.real,c1.img-c2.img);
 }
 Complex operator*(const Complex& c1,const Complex& c2){
-    return Complex((c1.real*c1.img - c2.real*c2.img),       // abcd
-                    (c1.real*c2.img + c1.img*c2.real));     // adbc
+    return Complex((c1.real*c1.img - c2.real*c2.img),       // ac-bd
+                    (c1.real*c2.img + c1.img*c2.real));     // ad+bc
 }
 Complex operator/(const Complex& c1,const Complex& c2){
     float denom = c2.real*c2.real  + c2.img*c2.img;
 
-    return Complex((c1.real*c2.real + c2.img*c1.img)/denom,     //acdb
-                    (c1.img*c2.real - c1.real*c2.img)/denom);   //bcad
+    return Complex((c1.real*c2.real + c2.img*c1.img)/denom,     //ac+bd/denom
+                    (c1.img*c2.real - c1.real*c2.img)/denom);   //bc-ad/denom
 }
 int main(){
-    Complex obj1(5,6);
-    Complex obj2(1,3);
+    Complex obj1(5,5);
+    Complex obj2(1,1);
     Complex sum = obj1+obj2;
     Complex sub = obj1-obj2;
     Complex mul = obj1*obj2;

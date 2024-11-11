@@ -10,15 +10,6 @@
         size = n;
     }
     void sort(){
-        // for(int i=0;i<size-1;i++){
-        //     for(int j=i+1;j<size;j++){
-        //         if(arr[j]<arr[i]){
-        //             T temp = arr[j];
-        //             arr[j] = arr[i];
-        //             arr[i] = temp;
-        //         }
-        //     }
-        // }
         for(int i=0;i<size-1;i++){
             int minIndex = i;
             for(int j=i+1;j<size;j++){
