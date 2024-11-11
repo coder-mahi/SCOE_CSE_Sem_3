@@ -16,7 +16,7 @@ Complex operator-(const Complex& c){
 }
 Complex operator*(const Complex& c){
    return Complex((real*img - c.real*c.img),       // ac-bd
-                    (real*c.img + img*c.real));   
+                    (real*c.img + img*c.real));   // ad+bc
 }
 Complex operator/(const Complex& c){
        float denom = c.real*c.real  + c.img*c.img;
