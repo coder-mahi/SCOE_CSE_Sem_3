@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/wxWidgets-3.2.6/include"
+                "C:/wxWidgets-3.2.6/include",
+                "C:/wxWidgets-3.2.6/include/msvc"
             ],
             "defines": [
                 "_DEBUG",
