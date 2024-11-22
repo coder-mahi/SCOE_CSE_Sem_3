@@ -4,7 +4,6 @@
 #include <sstream>
 using namespace std;
 
-// Global variables
 HINSTANCE g_hInst;
 HWND hUsername, hPassword, hLoginBtn, hQuestion, hOptions[4], hSubmitBtn, hScore;
 string username, password;
@@ -14,12 +13,10 @@ vector<vector<string>> options;
 vector<char> answers;
 bool isLoggedIn = false;
 
-// Function to display messages
 void ShowMessage(const char* message, const char* title = "Message") {
     MessageBox(NULL, message, title, MB_OK | MB_ICONINFORMATION);
 }
 
-// Function to initialize questions
 void InitializeQuestions() {
     questions = {
         "1. What is 5 + 3?",
@@ -36,7 +33,6 @@ void InitializeQuestions() {
     answers = {'C', 'A', 'C'};
 }
 
-// Function to handle the next question
 void DisplayQuestion(HWND hwnd) {
     if (currentQuestion < questions.size()) {
         SetWindowText(hQuestion, questions[currentQuestion].c_str());
@@ -47,11 +43,10 @@ void DisplayQuestion(HWND hwnd) {
         stringstream ss;
         ss << "Quiz Completed! Your Score: " << score << "/" << questions.size();
         ShowMessage(ss.str().c_str(), "Quiz Result");
-        PostQuitMessage(0);  // Exit the application
+        PostQuitMessage(0);  
     }
 }
 
-// Window Procedure
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch (uMsg) {
     case WM_COMMAND: {
@@ -67,12 +62,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
                 ShowMessage("Login Successful!", "Login");
                 isLoggedIn = true;
 
-                // Hide login elements
                 ShowWindow(hUsername, SW_HIDE);
                 ShowWindow(hPassword, SW_HIDE);
                 ShowWindow(hLoginBtn, SW_HIDE);
 
-                // Show quiz elements
                 ShowWindow(hQuestion, SW_SHOW);
                 for (auto& opt : hOptions) {
                     ShowWindow(opt, SW_SHOW);
@@ -86,7 +79,6 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
         }
 
         if ((HWND)lParam == hSubmitBtn) {
-            // Check answer
             for (int i = 0; i < 4; i++) {
                 if (SendMessage(hOptions[i], BM_GETCHECK, 0, 0) == BST_CHECKED) {
                     if (answers[currentQuestion] == 'A' + i) {
@@ -115,12 +107,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
     return 0;
 }
 
-// Entry Point
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
     g_hInst = hInstance;
     InitializeQuestions();
 
-    // Register the window class
     WNDCLASS wc = {};
     wc.lpfnWndProc = WindowProc;
     wc.hInstance = hInstance;
@@ -129,12 +119,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     RegisterClass(&wc);
 
-    // Create the window
     HWND hwnd = CreateWindow("QuizApp", "Quiz Application", WS_OVERLAPPEDWINDOW | WS_VISIBLE,
                               CW_USEDEFAULT, CW_USEDEFAULT, 500, 400,
                               NULL, NULL, hInstance, NULL);
 
-    // Create login elements
     CreateWindow("STATIC", "Username:", WS_VISIBLE | WS_CHILD,
                  50, 50, 100, 20, hwnd, NULL, hInstance, NULL);
     hUsername = CreateWindow("EDIT", "", WS_VISIBLE | WS_CHILD | WS_BORDER,
@@ -148,7 +136,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     hLoginBtn = CreateWindow("BUTTON", "Login", WS_VISIBLE | WS_CHILD,
                               150, 150, 100, 30, hwnd, NULL, hInstance, NULL);
 
-    // Create quiz elements
     hQuestion = CreateWindow("STATIC", "", WS_CHILD,
                               50, 50, 400, 60, hwnd, NULL, hInstance, NULL);
 
@@ -160,7 +147,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     hSubmitBtn = CreateWindow("BUTTON", "Submit", WS_CHILD,
                                150, 300, 100, 30, hwnd, NULL, hInstance, NULL);
 
-    // Main message loop
     MSG msg = {};
     while (GetMessage(&msg, NULL, 0, 0)) {
         TranslateMessage(&msg);
