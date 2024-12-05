@@ -21,7 +21,6 @@ class doctor:virtual public person{
         cout<<"\nEnter education: ";
         cin>>education;
     }
-
 };
 class nurse:virtual public person{
     public:

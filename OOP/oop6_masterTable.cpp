@@ -1,7 +1,7 @@
+// Student Master Table --updated to simple
 #include <iostream>
 #include <iomanip>
 using namespace std;
-
 class student {
 public:
     int roll;
@@ -19,7 +19,6 @@ public:
             cin>>sub[i];
         }
     }
-
     virtual void display(int n) {
         cout<<left<<setw(10)<<"Roll No"<<setw(15)<<"Name"<<"Subjects\n";
         cout<<setw(10)<<roll<<setw(15)<<name;
@@ -28,12 +27,10 @@ public:
         }
         cout<<endl;
     }
-
     ~student() {
         delete[] sub;
     }
 };
-
 class academics : public student {
 public:
     int* marks, * internal, * external;
@@ -54,7 +51,6 @@ public:
             total+=marks[i];
         }
     }
-
     void display(int n) {
         student::display(n);
         cout<<left<<setw(10)<<" "<<setw(15)<<" "<<setw(20)<<"Subjects"
@@ -98,7 +94,6 @@ public:
             cout<<"\nRecord not found.\n";
         }
     }
-
     ~academics() {
         delete[] internal;
         delete[] external;
@@ -113,7 +108,6 @@ int main() {
     cin>>n;
     academics ad;
     bptr=&ad;
-
     do {
         cout<<"\nEnter your choice:\n1) Build a master table\n2) List a table\n3) Insert a new entry\n4) Delete old entry\n5) Edit an entry\n6) Search for a record\n7) Exit\n";
         cin>>ch;
