@@ -3,7 +3,7 @@
 #include <sstream>
 
 HWND hUser, hPin, hAmount, hOutput;
-std::string username = "priyanka";
+std::string username = "mahesh";
 std::string pin = "1234";
 double balance = 1000;
 
