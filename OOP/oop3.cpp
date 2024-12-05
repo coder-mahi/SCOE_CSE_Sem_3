@@ -1,123 +1,107 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <iomanip> // For formatted output
+// modified code for book management system
+#include<iostream>
 using namespace std;
-
-class Book {
-private:
-    string author;
-    string title;
-    float price;
-    string publisher;
-    int stock;
-
-public:
-    // Constructor to initialize book details
-    Book(string a, string t, float p, string pub, int s)
-        : author(a), title(t), price(p), publisher(pub), stock(s) {}
-
-    // Check if the book matches the title and author
-    bool isAvailable(const string &t, const string &a) {
-        return (title == t && author == a);
+class book{
+    public:
+    string author, title, publisher;
+    int price,stock;
+    book()
+    {
+        title="";
+        author="";
+        publisher="";
+        price=0;
+        stock=0;
     }
+    void accept()
+    {
+        cout<<"\nEnter the author,title,publisher,price,stock of the book: ";
+        cin>>author>>title>>publisher>>price>>stock;
 
-    // Display book details
-    void displayDetails() {
-        cout << setw(15) << left << title
-             << setw(15) << author
-             << setw(10) << price
-             << setw(15) << publisher
-             << setw(10) << stock << endl;
     }
-
-    // Process a purchase request
-    bool purchase(int copies) {
-        if (copies <= stock) {
-            stock -= copies;
-            cout << "Total Cost: $" << price * copies << endl;
-            return true;
-        } else {
-            cout << "Required copies not in stock." << endl;
-            return false;
-        }
+    void display()
+    {
+        cout<<"\nAuthor\tTile\tPublis\tPrice\tStock"<<endl;
+        cout<<author<<"\t"<<title<<"\t"<<publisher<<"\t"<<price<<"\t"<<stock;
     }
-};
+    void search(book b1[],int n)
+    {
+        int f=0,no;
+        string t,a;
+        cout<<"\nEnter the title: ";
+        cin>>t;
+        cout<<"\nEnter the author: ";
+        cin>>a;
 
-class BookShop {
-private:
-    vector<Book *> inventory;
+        for(int i=0;i<n;i++)
+        {
+            if(b1[i].title==t&&b1[i].author==a)
+            {
+                f=1;
+                cout<<"\nBook availble!"<<endl;
+                 b1[i].display();
 
-public:
-    // Add a book to the inventory
-    void addBook(string author, string title, float price, string publisher, int stock) {
-        inventory.push_back(new Book(author, title, price, publisher, stock));
-    }
-
-    // Search for a book by title and author
-    void searchBook(const string &title, const string &author) {
-        for (auto &book : inventory) {
-            if (book->isAvailable(title, author)) {
-                cout << "\nBook Found:\n";
-                cout << setw(15) << left << "Title"
-                     << setw(15) << "Author"
-                     << setw(10) << "Price"
-                     << setw(15) << "Publisher"
-                     << setw(10) << "Stock" << endl;
-                cout << string(65, '-') << endl;
-                book->displayDetails();
-
-                int copies;
-                cout << "Enter the number of copies required: ";
-                cin >> copies;
-                book->purchase(copies);
-                return;
+                cout<<"\nEnter the number of copies you want to issue:";
+                cin>>no;
+                    
+                if (no <= b1[i].stock) {
+                    cout<<"\nTOtal cost of  book is: "<<b1[i].price*no;   
+                    b1[i].stock -= no; // Update the stock after issuing the books
+                } else {
+                    cout << "\nRequired copies not in stock!" << endl;
+                } 
+                break;
+                
             }
+            
         }
-        cout << "Book not available in inventory.\n";
-    }
-
-    // Destructor to free allocated memory
-    ~BookShop() {
-        for (auto &book : inventory) {
-            delete book;
+        if(!f)
+        {
+            cout<<"\nRequired copies not in stock";
+            
         }
     }
 };
+int main()
+{
+    int n,ch;
+    book *b1;
+  
+    cout<<"\nEnter the number of records in library: ";
+    cin>>n;
+    b1=new book[n];
 
-int main() {
-    BookShop shop;
-
-    // Add some books to the inventory
-    shop.addBook("J.K. Rowling", "Harry Potter", 25.5, "Bloomsbury", 10);
-    shop.addBook("Dan Brown", "Inferno", 20.0, "Doubleday", 5);
-    shop.addBook("George Orwell", "1984", 15.0, "Secker & Warburg", 8);
-
-    cout << "Welcome to the Book Shop Inventory System\n";
-
-    while (true) {
-        cout << "\nMenu:\n"
-             << "1. Search for a book\n"
-             << "2. Exit\n"
-             << "Enter your choice: ";
-        int choice;
-        cin >> choice;
-
-        if (choice == 1) {
-            string title, author;
-            cout << "Enter the book title: ";
-            cin.ignore(); // Clear input buffer
-            getline(cin, title);
-            cout << "Enter the author name: ";
-            getline(cin, author);
-            shop.searchBook(title, author);
-        } else if (choice == 2) {
-            cout << "Thank you for using the system!\n";
+    do{
+        cout<<"\nEnter your choice:\n1.Accept \n2. Display\n3.search\n4.exit"<<endl;
+        cin>>ch;
+        switch(ch){
+            case 1:
+            for(int i=0;i<n;i++)
+            {
+                b1[i].accept();
+            }
             break;
-        } else {
-            cout << "Invalid choice. Please try again.\n";
-        }
-    }
 
+            case 2:
+            for(int i=0;i<n;i++)
+            {
+                b1[i].display();
+            }
+            break;
+
+            case 3:
+            b1->search(b1,n);
+            break;
+
+            case 4:
+            cout<<"\nExiting from the code!";
+            break;
+
+            default:
+            cout<<"\nInvalid case!";
+
+        }
+
+    }while(ch!=4);
     return 0;
 }
