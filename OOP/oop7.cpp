@@ -1,65 +1,133 @@
-// Hospital Management System
-#include <iostream>
-#include <string>
+// 7. Hospital Management System --updated to simple
+#include<iostream>
 using namespace std;
-class Person {
-protected:
+class person{
+    public:
     string name;
-    int age;
+    int id,mo_no;
+};
+class doctor:virtual public person{
+    public:
+    string speciality,education;
+    void getdata1(){
+        cout<<"\nEnter id: ";
+        cin>>id;
+        cout<<"\nEnter name: ";
+        cin>>name;
+        cout<<"\nEnter mobile number: ";
+        cin>>mo_no;
+        cout<<"\nEnter speciality: ";
+        cin>>speciality;
+        cout<<"\nEnter education: ";
+        cin>>education;
+    }
 
-public:
-    Person(string n, int a) : name(n), age(a) {}
-    virtual void display() const {
-        cout << "Name: " << name << ", Age: " << age << endl;
+};
+class nurse:virtual public person{
+    public:
+    string dept,ward;
+    void getdata2(){
+        cout<<"\nEnter id: ";
+        cin>>id;
+        cout<<"\nEnter name: ";
+        cin>>name;
+        cout<<"\nEnter mobile number: ";
+        cin>>mo_no;
+        cout<<"\nEnter ward: ";
+        cin>>ward;
+        cout<<"\nEnter department: ";
+        cin>>dept;
     }
 };
+class admin:public doctor, public nurse{
+    public:
+    void search_d(doctor a1[],int n){
+        int f=0;
+        cout<<"\nEnter the name of doctor to be searched: ";
+        cin>>name;
+        cout<<"\nEnter ID of doctor to be serached: ";
+        cin>>id;
 
-class Doctor : public Person {
-    string specialization;
+        for(int i=0;i<n;i++){
+            if(a1[i].name==name&&a1[i].id==id){
+                f=1;
+                cout<<"\nDoctor is available!"<<endl;
+                cout<<"id\tname\tmobile number\tspeciality\teducation"<<endl;
+                cout<<a1[i].id<<"\t"<<a1[i].name<<"\t"<<a1[i].mo_no<<"\t"<<a1[i].speciality<<"\t"<<a1[i].education<<endl;
+            }
+        }
+        if(!f)
+        {
+          cout<<"Doctor "<<name<<" is not found!";
+        }
+    }
+    void search_n(nurse a2[],int n)
+    {
+        int f=0;
+        cout<<"\nEnter the name of nurse to be searched: ";
+        cin>>name;
+        cout<<"\nEnter ID of nurse to be serached: ";
+        cin>>id;
 
-public:
-    Doctor(string n, int a, string s) : Person(n, a), specialization(s) {}
-    void display() const override {
-        Person::display();
-        cout << "Specialization: " << specialization << endl;
+        for(int i=0;i<n;i++)
+        {
+            if(a2[i].name==name&&a2[i].id==id)
+            {
+                f=1;
+                cout<<"\nnurse is available!"<<endl;
+                cout<<"id\tname\tmobile number\tward\tdept"<<endl;
+                cout<<a2[i].id<<"\t"<<a2[i].name<<"\t"<<a2[i].mo_no<<"\t"<<a2[i].ward<<"\t"<<a2[i].dept<<endl;
+                
+            }
+        }
+        if(!f)
+        {
+          cout<<"\nnurse "<<name<<" is not found!";
+        }
     }
 };
+int main()
+{
+    admin ad;
+    doctor dd[10];
+    nurse nn[10];
+    int ch,n,dn;
+     cout<<"\nEnter the number of doctors: ";
+     cin>>dn;
+     cout<<"\nEnter the number of nurse: ";
+     cin>>n;
+    do{
+        cout<<"\nEnter your choice:\n1. Accept details for doctor:\n2. Accept details for Nurse: \n3. Search doctor: \n4. Search Nurse: \n5.Exit";
+        cin>>ch;
+        switch(ch)
+        {
+            case 1:
+            for(int i=0;i<dn;i++){
+            dd[i].getdata1();}
+            break;
 
-class Nurse : public Person {
-    int experience;
+            case 2:
+           for(int i=0;i<n;i++){
+            nn[i].getdata2();}
+            break;
 
-public:
-    Nurse(string n, int a, int e) : Person(n, a), experience(e) {}
-    void display() const override {
-        Person::display();
-        cout << "Experience: " << experience << " years" << endl;
-    }
-};
+            case 3:
+            ad.search_d(dd,dn);
+            break;
 
-class AdminStaff : public Person {
-    string department;
+            case 4:
+            ad.search_n(nn,n);
+            break;
 
-public:
-    AdminStaff(string n, int a, string d) : Person(n, a), department(d) {}
-    void display() const override {
-        Person::display();
-        cout << "Department: " << department << endl;
-    }
-};
+            case 5:
+            cout<<"\nExiting from the code!";
+            return 0;
+            break;
 
-int main() {
-    Doctor doc("Dr. Smith", 45, "Cardiology");
-    Nurse nur("Nancy", 30, 8);
-    AdminStaff admin("John", 35, "HR");
-
-    cout << "Doctor Details:\n";
-    doc.display();
-
-    cout << "\nNurse Details:\n";
-    nur.display();
-
-    cout << "\nAdministrative Staff Details:\n";
-    admin.display();
-
+            default:
+            cout<<"\nInvalid case!";
+        }
+        
+    }while(ch!=5);
     return 0;
 }
