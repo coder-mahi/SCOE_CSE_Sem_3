@@ -5,8 +5,7 @@ class book{
     public:
     string author, title, publisher;
     int price,stock;
-    book()
-    {
+    book(){
         title="";
         author="";
         publisher="";
