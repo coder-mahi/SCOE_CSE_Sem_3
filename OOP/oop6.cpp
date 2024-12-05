@@ -39,7 +39,7 @@ public:
         cout << setw(15) << "Subject Code"
              << setw(10) << "Internal"
              << setw(10) << "Exam" << endl;
-        cout << string(70, '-') << endl; // Separator line
+        cout << string(70, '-') << endl; 
     }
 
     void display() const override {
@@ -56,13 +56,12 @@ int main() {
     students.push_back(new Marks("Bob", 2, "Chemistry", "CH102", 35, 50));
 
     if (!students.empty()) {
-        // Display header only once
         students[0]->displayHeader();
     }
 
     for (const auto &student : students) {
         student->display();
-        delete student; // Cleanup
+        delete student; 
     }
 
     return 0;
