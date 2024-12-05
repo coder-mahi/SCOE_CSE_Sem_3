@@ -1,8 +1,10 @@
 // Assignment No. 1
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 using namespace std;
-class Bank{
+class Bank
+{
 public:
     string dname;
     int accno;
@@ -21,24 +23,33 @@ void Bank::accept(string name, int acc, float b)
     bal = b;
     cout << "\nInput accepted..!" << endl;
 }
-void Bank::withdraw(float amt){
+void Bank::withdraw(float amt)
+{
     this->amt = amt;
     bal = bal - amt;
-    cout<<"Succesfully withdraw...! Available balance: "<<bal<<endl;
+    cout << "Succesfully withdraw...! Available balance: " << bal << endl;
     wcount++;
 }
-void Bank::deposit(float amt){
+void Bank::deposit(float amt)
+{
     this->amt = amt;
     bal += amt;
-    cout<<"Updated balance: "<<bal<<endl;
+    cout << "Updated balance: " << bal << endl;
     dcount++;
 }
-void Bank::display(){
-    cout<<"Depositor Name : "<<dname<<endl;
-    cout<<"Your account No: "<<accno<<endl;
-    cout<<"Availabel Balance: "<<bal<<endl;
-    cout<<"No. of deposits: "<<dcount<<endl;
-    cout<<"No. of withdrawls: "<<wcount<<endl;
+void Bank::display()
+{
+    cout << left << setw(30) << "| Depositor Name:"
+        << " | " << dname << endl;
+    cout << left << setw(30) << "| Your Account No:"
+         << " | "<< accno << endl;
+    cout << left << setw(30) << "| Available Balance:"
+         << fixed << setprecision(3) << " | "<< bal << endl;
+    cout << left << setw(30) << "| No. of Deposits:"
+         << " | "<<dcount << endl;
+
+    cout << left << setw(30) << "| No. of Withdrawals:"
+          <<" | "<< wcount << endl;
 }
 int main()
 {
@@ -48,10 +59,10 @@ int main()
     float b;
     float amt;
     char c;
-    cout <<"\n** BANK MANAGEMENT SYSTEM **"<<endl;
-    cout<<"\nEnter Depositor name : ";
-    cout<<"\nAccount no. : ";
-    cout<<"\nEnter bank balance : " << endl;
+    cout << "\n** BANK MANAGEMENT SYSTEM **" << endl;
+    cout << "\nEnter Depositor name : ";
+    cout << "\nAccount no. : ";
+    cout << "\nEnter bank balance : " << endl;
     cin >> name;
     cin >> acc;
     cin >> b;
@@ -66,13 +77,13 @@ int main()
         switch (ch)
         {
         case 1:
-            cout <<"Enter Deposit ammount..$" << endl;
-            cin>>amt;
+            cout << "Enter Deposit ammount..$" << endl;
+            cin >> amt;
             obj.deposit(amt);
             break;
         case 2:
-            cout <<"Enter withdrawl ammount..$" << endl;
-            cin>>amt;
+            cout << "Enter withdrawl ammount..$" << endl;
+            cin >> amt;
             obj.withdraw(amt);
             break;
         case 3:
@@ -82,8 +93,8 @@ int main()
             exit(0);
             break;
         }
-        cout<<"\nDo you want to continue ? y/n"<<endl;
-        cin>>c;
-    }while(c == 'y' || c == 'Y');
+        cout << "\nDo you want to continue ? y/n" << endl;
+        cin >> c;
+    } while (c == 'y' || c == 'Y');
     return 0;
 }
