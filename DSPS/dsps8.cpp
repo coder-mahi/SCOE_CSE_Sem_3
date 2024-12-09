@@ -79,7 +79,6 @@ class Books{
 			}
 			
 			//Remove from other location
-			
 			Book *temp = Head ;
 			while(temp->next!=NULL && temp->next->ISBN !=ISBN){
 				temp = temp->next ;
@@ -92,9 +91,7 @@ class Books{
 				temp->next = toDelete->next ;
 				delete toDelete ;
 				cout<<"Book removed Successfully "<<endl;
-			
-			}
-			
+			}	
 		}
 		void Display(){
 			Book *temp= Head ;
@@ -112,20 +109,14 @@ class Books{
 					temp = temp->next ;
 				}
 			}
-			
 		}
-	
 };
 int main(){
-	
-	
 	Books b ;
 	b.addBooks("Flame","mahi123","12334",false);
 	b.addBooks("Flame2","mahesh2","123345",true);
 		b.addBooks("Flame3","mahesh3","1233456",true);
-			b.addBooks("Flame4","mahesh4","1233467",true);
-			
-			
+			b.addBooks("Flame4","mahesh4","1233467",true);	
 	cout<<"Displaying all Books "<<endl;
 	b.Display() ;
 	
