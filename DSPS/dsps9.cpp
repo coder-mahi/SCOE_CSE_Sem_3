@@ -52,6 +52,8 @@
 //     c.display();
 //     return 0;
 // }
+
+
 //charity mgnt system
 #include <iostream>
 #include <string>

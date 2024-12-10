@@ -135,7 +135,7 @@ class queue {
 public:
     int q[MAX], f = -1, r = -1, n;
 
-    void insert() {
+    void insert() {     //insert from rear 
         cout << "\nEnter number to be inserted in a queue: ";
         cin >> n;
         if (r == MAX - 1) {
@@ -149,7 +149,7 @@ public:
         }
     }
 
-    void insert_f() {
+    void insert_f() {       //insert from front
         cout << "\nEnter number to be inserted at front: ";
         cin >> n;
         if (f == 0) {
