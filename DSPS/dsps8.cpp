@@ -130,7 +130,6 @@ int main(){
 	cin>>isbn;
 	
 	b.removeBook(isbn) ;
-	
 	return 0 ;
 	
 }

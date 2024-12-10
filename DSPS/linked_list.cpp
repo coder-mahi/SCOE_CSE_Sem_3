@@ -1,50 +1,95 @@
 #include<iostream>
 using namespace std;
-struct Node{
-    int data;
-    Node* next;
+struct book{
+    string title,author,isbn;
+    bool avail;
+    book* next;
+    book(string t,string a, string i,bool isavail){
+        title = t;
+        author = a;
+        isbn = i;
+        avail = isavail;
+        next = nullptr;
+    }
 };
-void insert(Node*& head,int value){
-    Node* newNode;
-    newNode = new Node();
-    head->data = value;
-    head->next = nullptr;
-    if(head==nullptr){
-        head = newNode;
-        return;
+class Library{
+    book* head;
+    public:
+    Library(){
+        head = NULL;
     }
-    Node* temp = head;
-    while(temp->next!= nullptr){
-        temp = temp->next;
+    void addBook(string t,string a, string i,bool isavail){
+        book* newBook = new book(t,a,i,isavail);
+        if(head==NULL){
+            head = newBook;
+        }else{
+            book* temp = head;
+            while(temp->next!=NULL){
+                temp = temp->next;
+            }
+            temp->next = newBook;
+        }
+        cout<<"Book added successfully :"<<endl;
     }
-    temp->next = newNode;
-}
-void display(Node* head){
-    Node* temp = head;
-    while(temp!=nullptr){
-        cout<<temp->data<<"-> ";
-        temp = temp->next;
+    void searchBook(string title){
+        bool found = false;
+        if(head==NULL){
+            cout<<"Library is EMpty"<<endl;
+        }else{
+            book* temp = head;
+            while(temp!=NULL){
+                if(temp->title==title){
+                    cout<<"Book Found"<<endl;
+                    cout<<"Title : "<<temp->title;
+                    cout<<"Author : "<<temp->author;
+                    cout<<"ISBN : "<<temp->isbn;
+                    return ;
+                }
+                temp = temp->next;
+            }
+        }
     }
-    cout<<"NULL"<<endl;
-}
+    void deleteBook(string isbn){
+        bool found = false;
+        if(head==NULL){
+            cout<<"Library is EMpty"<<endl;
+        }
+        if(head->isbn == isbn){
+            book* temp = head;
+            head = head->next;
+            delete temp;
+            return ;
+        }
+        book* temp = head;
+        while(temp->next!=NULL && temp->next->isbn!=isbn){
+            temp= temp->next;
+        }
+        if(temp->next==NULL){
+            cout<<"Book Not found";
+        }else{
+            book* todelete = temp->next;
+            temp->next = todelete->next;
+            delete todelete;
+        }
+    }
+    void display(){
+        if(head==NULL){
+            cout<<"empty";
+        }else{
+            for(book* temp = head;temp;temp=temp->next){
+                cout<<"Title : "<<temp->title<<endl; 
+                cout<<"Author : "<<temp->author<<endl; 
+                cout<<"ISBN : "<<temp->isbn<<endl; 
+                cout<<endl;
+            }
+        }
+    }
+};
 int main(){
-    Node* head;
-    head = nullptr;
-    int ch,value;
-    char choice;
-    do{
-    cout<<"select choice\n1.Insert\n2.Display linked list"<<endl;
-    cin>>ch;
-    switch(ch){
-        case 1:
-            cout<<"Enter data you want to insert..."<<endl;
-            cin>>value;
-            insert(head,value);
-        case 2:
-            display(head);
-    }
-    cout<<"Do you want to continue (y/n)";
-    cin>>choice;
-    }while(choice=='y' || choice =='Y');
+    Library b;
+    b.addBook("xyz","auth1","123",true);
+    b.addBook("abc","auth2","766",true);
+    b.addBook("pqr","auth3","4443",true);
+    b.display();
     return 0;
 }
