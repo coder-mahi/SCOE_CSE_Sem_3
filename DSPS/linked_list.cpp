@@ -39,14 +39,16 @@ class Library{
             book* temp = head;
             while(temp!=NULL){
                 if(temp->title==title){
-                    cout<<"Book Found"<<endl;
+                    cout<<"Book Found..."<<endl;
                     cout<<"Title : "<<temp->title;
                     cout<<"Author : "<<temp->author;
                     cout<<"ISBN : "<<temp->isbn;
+                    cout<<"Avaibility : "<<(temp->avail ? "Available" : "Not Available")<<endl;
                     return ;
                 }
                 temp = temp->next;
             }
+            cout<<"Book Not found"<<endl;
         }
     }
     void deleteBook(string isbn){
@@ -67,9 +69,14 @@ class Library{
         if(temp->next==NULL){
             cout<<"Book Not found";
         }else{
+            found = true;
+            cout<<"Book  deleted!!!";
             book* todelete = temp->next;
             temp->next = todelete->next;
             delete todelete;
+        }
+        if(!found){
+            cout<<"Book Not found..!"<<endl;
         }
     }
     void display(){
@@ -87,9 +94,16 @@ class Library{
 };
 int main(){
     Library b;
+    string title,isbn;
     b.addBook("xyz","auth1","123",true);
     b.addBook("abc","auth2","766",true);
     b.addBook("pqr","auth3","4443",true);
     b.display();
+    cout<<"Enter Title of boook to search : "<<endl;
+    cin>>title;
+    b.searchBook(title);
+    cout<<"Enter ISBN of boook to search : "<<endl;
+    cin>>isbn;
+    b.deleteBook(isbn);
     return 0;
 }
