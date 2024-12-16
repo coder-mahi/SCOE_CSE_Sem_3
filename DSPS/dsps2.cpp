@@ -192,22 +192,18 @@ public:
 
     // Static method to delete duplicate entries based on the name only in the original array
     static void deleteDuplicate(Lib books[], int& n) {
-        int i = 0;
-        while (i < n) {
-            int j = i + 1;
-            while (j < n) {
-                if (books[j].name == books[i].name) {
-                    // Shift all elements to the left
+        for (int i = 0; i < n - 1; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+              if (books[j].name == books[i].name) {
                     for (int k = j; k < n - 1; ++k) {
                         books[k] = books[k + 1];
                     }
-                    --n; // Reduce the total count
-                } else {
-                    ++j;
-                }
-            }
-            ++i;
+            --n; // Reduce total count
+            --j; // Adjust j to re-check the new element at this position
         }
+    }
+}
+
         cout << "\nDuplicates removed based on book name in the original array.\n";
         cout << "Unique books after removing duplicates:" << endl;
         displayAll(books, n);
